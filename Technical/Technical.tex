@@ -1,0 +1,75 @@
+\documentclass[a4paper,11pt]{report}
+
+    \title{Filterbank Project Documentation}
+    \author{Albert van Kiel, Timo Hermsen, Robin Baneke,\\ Max van Hasselt, Robert Kleef and Menno Prinzhorn}
+    \date{\today}
+    
+    \begin{document}
+    
+    \maketitle
+    
+    \chapter{Introduction}
+    
+    During the course of this project, we are creating a free and open source framework that contains the generic algorithms and file handling for astronomical data sets. 
+    This framework will be modular. Similar to OpenCV, wherein specific modules can be added and disabled depended on the needs of a project. 
+    This framework will be implemented in Python and C++.
+    
+    \section{Current situation}
+    
+    The eScience Center is in need of an application that is able to both read and write filterbank files. There already is an application in use. 
+    However, the current application is outdated and therefore has to be rewritten. The scope of this project is to rewrite a new software stack with updated technology, 
+    such as using the GPU which is highly modular and re-usable.
+    
+    The development of the application is split into multiple parts and distributed over two different teams. Each team is assigned to work on one of these parts and 
+    make sure that it completed within the given timeframe. After each part is finished, it has to be merged into the main application.
+    
+    \chapter{Plan of action}
+    
+    \section{Mission}
+    
+    The purpose of this part of the project is to read and write filterbank files. We are first required to create this part using Python. 
+    And if we are finished with creating this part in Python, we will port it to C and C++.
+    
+    We plan on using Scrum as our project method. By applying Scrum we are able to make changes, based on the feedback given by our product owners, whenever necessary to the application.
+    
+    \section{Monitoring performance}
+    
+    In order to monitor the performance of our development our product owners decided to plan weekly reviews. These reviews could be used to discuss the pace of our project. 
+    If our product owners are not satisfied with the pace of our development team, we could look at possible improvements.
+    
+    \section{Risks}
+    
+    \begin{itemize}
+        \item A shortage of knowledge about Python/C/C++
+        \item An inflation of requirements
+        \item A wrong estimation of required development time
+        \item Lack of motivation
+    \end{itemize}
+    
+    \chapter{Technical details}
+    
+    \section{Requirements}
+    
+    The requirements can be divided into two different categories. There are both functional and non-functional requirements.
+    
+    \subsection{Non-functional}
+    
+    The non-functional requirements describe the technical requirements for the application.
+    
+    \begin{itemize}
+        \item Support for:\\ MacOS High Sierra (x86\_64), CentOS (x86\_64), Raspbian(ARM\ x64)
+        \item Python 3.6
+        \item Must be modular
+    \end{itemize}
+    
+    \subsection{Functional}
+    
+    \begin{itemize}
+        \item As user I want to read filterbank files in my program, so we can use the astronomical data in scientific programs.
+        \item As user I want to write filterbank files in my program, so we can write astronomical data in scientific program
+        \item As scientific programmer I want that my filterbank reader performs with very large datasets (+1TB of data), which is often the case in software
+        \item As scientific programmer I want that my filterbank writer performs with very large datasets(+1TB of data), which is often the case in software
+    \end{itemize}
+    
+    
+    \end{document}

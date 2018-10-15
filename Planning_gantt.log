@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2018.9.28)  15 OCT 2018 14:23
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2018.9.28)  15 OCT 2018 14:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -480,27 +480,30 @@ LaTeX Font Info:    Try loading font information for OT1+phv on input line 17.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
-Overfull \hbox (53.08852pt too wide) in paragraph at lines 74--75
+Overfull \hbox (53.08852pt too wide) in paragraph at lines 82--83
 [][] 
  []
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/mc/n' undefined
-(Font)              using `OT1/cmr/m/n' instead on input line 76.
+(Font)              using `OT1/cmr/m/n' instead on input line 84.
 
 [1
 
-{/usr/share/texlive/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
-(./Planning_gantt.aux)
+{/usr/share/texlive/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \vbox (216.52066pt too high) has occurred while \output is active []
+
+
+[2] (./Planning_gantt.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 11741 strings out of 494820
- 236187 string characters out of 3178049
- 286965 words of memory out of 3000000
- 14692 multiletter control sequences out of 15000+200000
+ 11821 strings out of 494820
+ 237687 string characters out of 3178049
+ 291783 words of memory out of 3000000
+ 14772 multiletter control sequences out of 15000+200000
  15457 words of font info for 36 fonts, out of 3000000 for 9000
  198 hyphenation exceptions out of 8191
  63i,7n,66p,444b,737s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -510,7 +513,7 @@ e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf
 onts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/ty
 pe1/urw/helvetic/uhvb8ac.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/hel
 vetic/uhvr8ac.pfb>
-Output written on Planning_gantt.pdf (2 pages, 51407 bytes).
+Output written on Planning_gantt.pdf (2 pages, 52182 bytes).
 PDF statistics:
  35 PDF objects out of 1000 (max. 8388607)
  25 compressed objects within 1 object stream

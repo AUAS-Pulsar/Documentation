@@ -4,10 +4,11 @@
 
 \begin{document}
 \title{Planning Software For Science.}
-\author{Menno Prinzhorn, Albert van Kiel, Robin Baneken, Robert Kleef, \and Max van Hasselt, Timo Hermsen}
+\author{Menno Prinzhorn, Albert van Kiel, Robin Baneke, Robert Kleef, \and Max van Hasselt, Timo Hermsen}
 \date{September 2018}
 \maketitle
-
+\begin{landscape}
+\begin{minipage}{\textwidth}
 \definecolor{barblue}{RGB}{153,204,254}
 \definecolor{groupblue}{RGB}{51,102,254}
 \definecolor{linkred}{RGB}{165,0,33}
@@ -15,7 +16,6 @@
 \renewcommand\mddefault{mc}
 \renewcommand\bfdefault{bc}
 \sffamily
-\newpage
 \begin{itemize}
 	\item Beide teams
 	\item[\textcolor{blue}{\textbullet}] Algorithm
@@ -25,6 +25,8 @@
 	canvas/.append style={fill=none, draw=black!5, line width=.75pt},
 	hgrid style/.style={draw=black!5, line width=.75pt},
 	vgrid={*1{draw=black!5, line width=.75pt}},
+	x unit=1cm,
+	y unit chart=.74cm,
 	today=3,
 	today rule/.style={
 		draw=black!64,
@@ -67,8 +69,8 @@
 \ganttbar[bar/.append style={fill=red}]{\textbf{8} Downsampling}{1}{2}\\
 \ganttbar[bar/.append style={fill=blue}]{\textbf{9} Use pyrtlsdr package}{1}{2} \\
 \ganttbar[bar/.append style={fill=blue}]{\textbf{10} Fourier transformation }{1}{2} \\
-
 \end{ganttchart}
+\end{minipage}
 
 \begin{ganttchart}[
 	canvas/.append style={fill=none, draw=black!5, line width=.75pt},
@@ -80,6 +82,7 @@
 		dash pattern=on 3.5pt off 4.5pt,
 		line width=1.5pt
 	},
+	x unit=1cm,
 	today label font=\small\bfseries,
 	title/.style={draw=none, fill=none},
 	title label font=\bfseries\footnotesize,
@@ -119,9 +122,10 @@
 \ganttbar{\textbf{2} Github CI release}{5}{6} \\
 \ganttbar{\textbf{3} Create repository documentation}{5}{6} \\
 \ganttbar[bar/.append style={fill=red}]{\textbf{4} Read raw bytes}{5}{6} \\
-\ganttbar[bar/.append style={fill=blue}]{\textbf{5} Implement waterfall for fourier transformation}{5}{6} \\
+\ganttbar[bar/.append style={fill=blue}]{\textbf{5} Implement waterfall for FFT}{5}{6} \\
 
 \end{ganttchart}
+\end{landscape}
 
 
 

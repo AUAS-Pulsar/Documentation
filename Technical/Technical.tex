@@ -1,36 +1,40 @@
 \documentclass[a4paper,11pt]{report}
 
-    \title{Filterbank Project Documentation}
+    \title{Asteria Project Documentation}
     \author{Albert van Kiel, Timo Hermsen, Robin Baneke,\\ Max van Hasselt, Robert Kleef and Menno Prinzhorn}
     \date{\today}
     
-    \begin{document}
+	\begin{document}
     
     \maketitle
     
     \chapter{Introduction}
-    
+	    
     During the course of this project, we are creating a free and open source framework that contains the generic algorithms and file handling for astronomical data sets. 
     This framework will be modular. Similar to OpenCV, wherein specific modules can be added and disabled depended on the needs of a project. 
     This framework will be implemented in Python and C++.
     
     \section{Current situation}
     
-    The eScience Center is in need of an application that is able to both read and write filterbank files. There already is an application in use. 
+    The development of the application is split into multiple parts and distributed over two different teams, there are two teams on handling the in and output (team IO) and one implementing algorithms (team Algorithm). Each team is assigned to work on their own part of the 			    project, at the end of each sprint the parts will be merged together, the result will be delivered to the product owners.
+
+    For the IO part the eScience Center is in need of an application that is able to both read and write filterbank files. There already is an application in use. 
     However, the current application is outdated and therefore has to be rewritten. The scope of this project is to rewrite a new software stack with updated technology, 
     such as using the GPU which is highly modular and re-usable.
-    
-    The development of the application is split into multiple parts and distributed over two different teams. Each team is assigned to work on one of these parts and 
-    make sure that it completed within the given timeframe. After each part is finished, it has to be merged into the main application.
+
+	The Algorithm part will be developing an application that detects pulsars in large datasets. The pulsars will be detected using the fast fourier transformation. Also, since the datasets are very large, we might want to do a parallel computing implementation for the algorithm in the          	future.
+
+    We are using Scrum as our project method. By applying Scrum we are able to make changes, based on the feedback given by our product owners, whenever necessary to the application.
     
     \chapter{Plan of action}
     
     \section{Mission}
     
-    The purpose of this part of the project is to read and write filterbank files. We are first required to create this part using Python. 
-    And if we are finished with creating this part in Python, we will port it to C and C++.
-    
-    We plan on using Scrum as our project method. By applying Scrum we are able to make changes, based on the feedback given by our product owners, whenever necessary to the application.
+    The purpose of the IO part of the project is to read and write filterbank files.
+
+	For the Algorithm part of the project the goal is to detect pulsars in large datasets using algorithms.
+
+	The solutions will first be implemented in Python and later in C++.
     
     \section{Monitoring performance}
     
@@ -56,20 +60,36 @@
     
     The non-functional requirements describe the technical requirements for the application.
     
+    Since some users might have problems understanding C++ code we will develop a standalone version in Python, since Python is readable even without a lot of programming knowledge.
+	By doing this we give users the possibility to focus on the logic of the algorithm without needing C++ knowledge.
+    
     \begin{itemize}
         \item Support for:\\ MacOS High Sierra (x86\_64), CentOS (x86\_64), Raspbian(ARM\ x64)
         \item Python 3.6
+        \item C++ 14
         \item Must be modular
     \end{itemize}
     
     \subsection{Functional}
-    
-    \begin{itemize}
+
+    All users:
+	\begin{itemize}
         \item As user I want to read filterbank files in my program, so we can use the astronomical data in scientific programs.
         \item As user I want to write filterbank files in my program, so we can write astronomical data in scientific program
+		\item As a user I want to downsample given input, so it can be used in a later stage.
+		\item As user, I want clear exceptions when something is not set right, so i can more easily debug my program.
+	\end{itemize}
+	AUAS Students:
+	\begin{itemize}
+		\item As student I don't to worry about thread safety, so it's usable in highly threaded applications.
+		\item As student I want that Asteria is easily imported, so I can easily import it in other projects.
+		\item As a student, I want that Asteria runs on limited PC hardware, so I can test my projects on my personal computer.
+    \end{itemize}
+	Scientific programmer:
+	\begin{itemize}
         \item As scientific programmer I want that my filterbank reader performs with very large datasets (+1TB of data), which is often the case in software
         \item As scientific programmer I want that my filterbank writer performs with very large datasets(+1TB of data), which is often the case in software
-    \end{itemize}
-    
-    
+		\item As scientific programmer, I want to downsample large sizes the input time series(+1TB) so it can be used in astronomical projects.
+    \end{itemize}    
+
     \end{document}

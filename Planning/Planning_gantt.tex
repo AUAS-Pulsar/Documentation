@@ -163,16 +163,58 @@
 \gantttitlelist{2,...,15}{1} \\
 
 \ganttgroup{Sprint 3}{7}{8} \\
-\ganttbar{\textbf{1} Gantt planning updaten}{7}{8} \\
-\ganttbar{\textbf{2} Documentation waterfall class}{7}{8} \\
-\ganttbar{\textbf{3} Tests for waterfall}{7}{8} \\
-\ganttbar{\textbf{4} Unit tests for new PSD}{7}{8} \\
-\ganttbar{\textbf{5} Meeting E-Science center}{7}{8} \\
-\ganttbar[bar/.append style={fill=blue}]{\textbf{6} Method to enable data streams}{7}{8} \\
-\ganttbar[bar/.append style={fill=blue}]{\textbf{7} Downsample input timeseries}{7}{8} \\
-\ganttbar[bar/.append style={fill=blue}]{\textbf{8} Dedisperse input timeseries}{7}{8} \\
+\ganttbar[bar/.append style={fill=red}]{\textbf{1} Detect pulsars}{7}{8} \\
+\ganttbar[bar/.append style={fill=red}]{\textbf{2} Stream dataset}{7}{8} \\
+\ganttbar[bar/.append style={fill=blue}]{\textbf{3} Build waterfall module}{7}{8} \\
+\ganttbar{\textbf{4} Meeting E-Science center}{7}{8} \\
+\ganttbar[bar/.append style={fill=blue}]{\textbf{6} Dedisperse input timeseries}{7}{8} \\
+\ganttbar[bar/.append style={fill=red}]{\textbf{7} Decimate input timeseries}{7}{8} \\
 
 \end{ganttchart}
+
+\begin{ganttchart}[
+	canvas/.append style={fill=none, draw=black!5, line width=.75pt},
+	hgrid style/.style={draw=black!5, line width=.75pt},
+	vgrid={*1{draw=black!5, line width=.75pt}},
+	today=6,
+	today rule/.style={
+		draw=black!64,
+		dash pattern=on 3.5pt off 4.5pt,
+		line width=1.5pt
+	},
+	x unit=1cm,
+	today label font=\small\bfseries,
+	title/.style={draw=none, fill=none},
+	title label font=\bfseries\footnotesize,
+	title label node/.append style={below=7pt},
+	include title in canvas=false,
+	bar label font=\mdseries\small\color{black!70},
+	bar label node/.append style={left=2cm},
+	bar/.append style={draw=none, fill=black!63},
+	bar incomplete/.append style={fill=barblue},
+	bar progress label font=\mdseries\footnotesize\color{black!70},
+	group incomplete/.append style={fill=groupblue},
+	group left shift=0,
+	group right shift=0,
+	group height=.5,
+	group peaks tip position=0,
+	group label node/.append style={left=.6cm},
+	group progress label font=\bfseries\small,
+	link/.style={-latex, line width=1.5pt, linkred},
+	link label font=\scriptsize\bfseries,
+	link label node/.append style={below left=-2pt and 0pt}
+	]{1}{13}
+	\gantttitle[
+	title label node/.append style={below left=7pt and -3pt}
+	]{WEEKS:\quad1}{1}
+	\gantttitlelist{2,...,15}{1} \\
+	
+	\ganttgroup{Sprint 4}{9}{10} \\
+	\ganttbar{\textbf{1} Parallelization}{9}{10} \\
+	\ganttbar{\textbf{2} }{9}{10} \\
+	
+\end{ganttchart}
+
 \end{landscape}
 
 \end{document}

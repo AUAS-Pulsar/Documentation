@@ -94,30 +94,61 @@
 		\item As scientific programmer, I want to downsample large sizes the input time series(+1TB) so it can be used in astronomical projects.
     \end{itemize}    
 
+    \newpage
+
     \section{Efficiency measurements}
     
     In this chapter we discuss the efficiency of the modules and its methods, by performing benchmarks and profiling and looking at the Big O of some methods.
+    The only module we did not test for this chapter, is the plot module. We decided to exclude this module because the plots plays no role in the pipeline
+    and is not very complex. Thus their complexity and performance being irrelevant for now.
+
+    Furthermore, for running the benchmarks and profiling we decided to use a Python script, rather than an Ansible or Bash script. We chose for Python because
+    our team had more knowledge regarding Python than Ansible or Bash. Furthermore, we had to run the benchmarks on an old machine running CentOS 6, and installing
+    dependencies like Ansible on this machine would be difficult. Bash could have been a possibility, however, since our team and the upcoming team might not have
+    much knowledge regarding Bash, creating a Bash script to run the code could become a problem.
 
     \subsection{Computional complexity}
 
-    The complexity of the discrete Fourier transformation is equal to $O(n^2)$, and for the fast Fourier transformation the complexity is equal to $O(n\,log\,n)$.
+    In this section we describe the computional of each module we implemented in the Asteria library.
 
-    To test whether expected Big O holds true when running the actual methods, we decided to benchmark the different methods. The results of benchmarks are described
+    First, the complexity of reading the filterbank data is equal to $O(n*m)$, where $n$ is equal to the amount of samples and $m$ is equal to the amount of intermediate
+    frequency channels. For selecting the filterbank data, when reading the filterbank data at once, the complexity is equal to $O(n)$.
+
+    Second, for the clipping module, the complexity can be described as $O(n+2m)$; where $n$ is the amount of samples and $m$ is equal to the amount of columns.
+
+    Third, the complexity of the dedispersion module is equal to $O(2n+m+m^2)$. However, for the benchmarks we used the old dedispersion module, back when the complexity
+    was equal to $O(n)$.
+
+    The timeseries, which includes downsampling, has a complexity that is equal to $O(2n)$.
+
+    The complexity of the discrete Fourier transformation is equal to $O(n^2)$, this means that the performance is equal to the square of the amount of samples.
+    
+    For the fast Fourier transformation the complexity is equal to $O(n\,log\,n)$, which means that the performance is equal to linearithmic of the amount of samples.
+    And even though, the complexity of the fast Fourier transformation is already less than the discrete Fourier transformation, even more gains could be made when
+    performing the fast Fourier transformations in parallel. A process that is impossible to do using the discrete Fourier transformation.
+
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=1\columnwidth]{big_o_complexity_chart}
+        \caption{The Big O complexity chart displays the curve for each function and describes the performance using colors.}
+    \end{figure}
+
+    To test whether the expected Big O holds true when running the actual methods, we decided to benchmark the different methods. The results of the benchmarks are described
     and explained in the upcoming paragraph.
 
     \subsection{Benchmarks}
     
     Furthermore, we measured and compared running the discrete Fourier transformation with the fast Fourier transformation. For each method, we ran it using different sample sizes.
     After performing the measurements we noticed that while the time it took to run the discrete Fourier transformation increased almost quadratically, the time it took to run fast 
-    Fourier transformation increased linearly. This difference in efficiency becomes increasingly important when running the pipeline using larger sample sizes.
+    Fourier transformation increased linearithmicly. This difference in efficiency becomes increasingly important when running the pipeline using larger sample sizes.
 
-    \begin{figure}[h]
+    \begin{figure}[h!]
         \hspace*{-2cm}                                                           
         \includegraphics[width=1.4\columnwidth]{linechart_dft_vs_fft}
         \caption{A linechart of the measurements of the discrete Fourier transformation vs the fast fourier transformation.}
     \end{figure}
 
-    \begin{figure}[h]
+    \begin{figure}[h!]
         \centering
         \begin{tabular}{|l|l|l|}
             \hline
@@ -133,9 +164,9 @@
 
     \subsection{Profiling}
 
-    For profiling we ran the pipeline module using a static filterbank file a 100 times with a total of 49150 samples. The pipeline module ran and measured the time it took
+    For profiling we ran the pipeline module using a static filterbank file a 100 times with a total of 3070 and 49150 samples. The pipeline module ran and measured the time it took
     to run each method of the Asteria library. After measuring the time, we calculated the standard deviation to look if there were any outliers and after noticing no significant
-    outliers, we used the mean of each method for visualizing the measurements.
+    outliers, we used the mean of each method for visualizing the average measurements.
 
     To be able to compare the efficiency of the methods, we decided to visualize both a horizontal bar chart and a pie chart for each method. By doing so, we hope to see whether
     there are any significant results that we would otherwise fail to notice. Furthermore, to see whether there are any relative changes when running different sample sizes, we
@@ -145,14 +176,14 @@
     transformation is incredibly slow when compared to the fast Fourier transformation (as discussed in the previous section). Furthermore, when the sample size increases, so does the difference
     between the discrete Fourier transformation and the other methods. Besides the discrete Fourier transformation there are no significant differences between the methods for the increased sample size.
 
-    \begin{figure}[h]
+    \begin{figure}[h!]
         \centering
         \includegraphics[width=1.2\columnwidth]{barchart_3070}
         \caption{Measured time per method for 3070 samples.}
     \end{figure}
 
 
-    \begin{figure}[h]
+    \begin{figure}[h!]
         \centering
         \includegraphics[width=1.2\columnwidth]{barchart_49150}
         \caption{Measured time per method for 49150 samples.}
@@ -163,8 +194,54 @@
     displayed using a piechart, displayed below.
 
     \begin{figure}[h]
-        \includegraphics[width=0.9\columnwidth]{piechart_49150}
+        \centering
+        \includegraphics[width=0.8\columnwidth]{piechart_49150}
         \caption{The piechart shows how the time of running a filterbank pipeline is distributed between the different methods. }
     \end{figure}
+
+    \newpage
+
+    \section{What's next}
+
+    In the previous chapters we looked back at the significant results we achieved. However, for the Asteria project to be succesfully adapted by both professional and amateur astrophysicists, a lot of changes
+    still have to be made to the current Asteria project. This mostly concerns implementing additional features to the current Python pipeline and porting the project afterwards to C and C++.
+
+    \subsection{Additional features in Python}
+
+    The plans for which features to implement in the pipeline came from existing pulsar detection libraries like SigProc and Presto. Furthermore, some research papers describe which features should be created and
+    in which order these features should be implemented in a pipeline.
+
+    A feature most pulsar detection libraries include, but ours is missing, is the feature of identifying birdies. This feature is used to identify bad frequencies after performing the fast Fourier transformations.
+    These bad frequencies are begin identified saved in a file, so they can be easily removed in the future.
+
+    Furthermore, the harmonic summing is something we were advised to implement by the Escience Netherlands. The Harmonic summing is done after running the fast Fourier transformations and identifying the birdies.
+    Harmonic summing is used to reconstruct power distributed throughout harmonics back in the Fourier domian. This is repeated multiple times to increase the effect.
+
+    After that, the data is searched for single and periodic signals. Every single that surpasses the given threshold should be logged and saved for the upcoming detection processes.
+    Then sifting is used to identify duplicate detections of the same signal at slightly different dispersion measures. These duplicates should be removed to avoid confusion.
+
+    After removing the duplicate signals, the candidates that remain should be phase-folded. In the folding process, the samples are transformed to display as a function of time.
+    This changes the signal-to-noise ratio and thus makes it easier to spot pulsars, but removes the information that could be extracted from the frequecies. Again the information 
+    that is gained from this analysis should be stored for later use.
+
+    The last step is performing transient searches. The transient search smooths the time series using boxcar filters, before identifying the possible candidates using an appropirate signal-to-noise
+    threshold. 
+    
+    Additionally machine learning could be used to identify the optimal parameters for setting thresholds.
+
+    Furthermore, the current library is missing a Command Line Interface to interact with it. This should be created when a larger portion of the pipeline is finished, to avoid the need
+    to make changes to the Command Line Interface after a function has been updated.
+
+    \subsection{Porting to C and C++}
+
+    To make the library not only available to Python developers, but also to C and C++ developers, the library has to be ported to C and C++. When porting the library to C and C++, the focus should be on
+    efficient usage of the memory.
+
+    Currently the library makes use of some nice features created by the Numpy library. Because the Numpy library is only available in Python, some function should be added to make porting to C possible.
+    However, since the functions used are not complex, rewriting it in C and C++ should be possible.
+
+    \nocite{*}
+    \bibliographystyle{plain}
+    \bibliography{references}
 
     \end{document}

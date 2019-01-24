@@ -288,6 +288,32 @@ Returns an array containing the transformed values.
 \end{Highlighting}
 \end{Shaded}
 
+\subsection{3.3 IFFT}\label{ifft}
+
+This function computes the inverse of the one-dimensional n-point
+discrete Fourier transform computed by fft
+
+\subsubsection{3.3.1 Parameters}\label{parameters-2}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+Parameter & Description\tabularnewline
+\midrule
+\endhead
+input\_data & Input array, can be complex.\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsubsection{3.3.2 Example usage}\label{example-usage-2}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>>>} \ImportTok{from}\NormalTok{ Asteria }\ImportTok{import}\NormalTok{ fourier}
+\OperatorTok{>>>}\NormalTok{ fourier.ifft([}\DecValTok{0}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{])}
+\NormalTok{array([ }\DecValTok{1}\NormalTok{.}\OperatorTok{+}\FloatTok{0.}\NormalTok{j,  }\DecValTok{0}\NormalTok{.}\OperatorTok{+}\FloatTok{1.}\NormalTok{j, }\OperatorTok{-}\DecValTok{1}\NormalTok{.}\OperatorTok{+}\FloatTok{0.}\NormalTok{j,  }\DecValTok{0}\NormalTok{.}\OperatorTok{-}\FloatTok{1.}\NormalTok{j])}
+\end{Highlighting}
+\end{Shaded}
+
 \section{4. Plotting diagrams}\label{plotting-diagrams}
 
 \subsection{4.1 PSD}\label{psd}
@@ -295,7 +321,7 @@ Returns an array containing the transformed values.
 The \texttt{plot.psd} function can be used to generate the data for a
 Power Spectral Density plot.
 
-\subsubsection{4.1.1 Parameters}\label{parameters-2}
+\subsubsection{4.1.1 Parameters}\label{parameters-3}
 
 \begin{longtable}[]{@{}ll@{}}
 \toprule
@@ -366,7 +392,7 @@ freqs\strut
 \bottomrule
 \end{longtable}
 
-\subsubsection{4.1.3 Example Usage}\label{example-usage-2}
+\subsubsection{4.1.3 Example Usage}\label{example-usage-3}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -507,7 +533,7 @@ Returns the center frequency stored in the filterbank header\strut
 \bottomrule
 \end{longtable}
 
-\subsubsection{4.2.3 Example Usage}\label{example-usage-3}
+\subsubsection{4.2.3 Example Usage}\label{example-usage-4}
 
 \paragraph{4.2.3.1 With discrete data}\label{with-discrete-data}
 
@@ -727,7 +753,7 @@ filter_indv_channels(<TIME_SAMPLES>)
 
 This method performs dedispersion on the filterbank data.
 
-\subsubsection{7.2.1 Parameters}\label{parameters-3}
+\subsubsection{7.2.1 Parameters}\label{parameters-4}
 
 \begin{longtable}[]{@{}ll@{}}
 \toprule
@@ -755,7 +781,7 @@ Samples & Dedispersed samples\tabularnewline
 
 This method finds the dispersion measure.
 
-\subsubsection{7.3.1 Parameters}\label{parameters-4}
+\subsubsection{7.3.1 Parameters}\label{parameters-5}
 
 \begin{longtable}[]{@{}ll@{}}
 \toprule
@@ -792,7 +818,7 @@ This method finds a line starting from the sample index given in the
 parameters. This will stop if there isn't a intensity within the
 max\_delay higher than the average\_intensity.
 
-\subsubsection{7.4.1 Parameters}\label{parameters-5}
+\subsubsection{7.4.1 Parameters}\label{parameters-6}
 
 \begin{longtable}[]{@{}ll@{}}
 \toprule
@@ -846,7 +872,7 @@ This method finds the average intensity for top x intensities. The
 \texttt{average\_intensity} is considered a requirement for intensities
 to be considered a pulsar.
 
-\subsubsection{7.5.1 Parameters}\label{parameters-6}
+\subsubsection{7.5.1 Parameters}\label{parameters-7}
 
 \begin{longtable}[]{@{}ll@{}}
 \toprule

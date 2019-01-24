@@ -1,0 +1,1075 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\PassOptionsToPackage{hyphens}{url} % url is loaded by hyperref
+\usepackage[unicode=true]{hyperref}
+\hypersetup{
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\usepackage{longtable,booktabs}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{long table}}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+
+\date{}
+
+\begin{document}
+
+\section{1. Getting started}\label{getting-started}
+
+\subsection{1.1 Example filterbank
+files}\label{example-filterbank-files}
+
+\subsubsection{Use one of the following filterbank files as an
+example:}\label{use-one-of-the-following-filterbank-files-as-an-example}
+
+\begin{itemize}
+\tightlist
+\item
+  ``https://git.dev.ti-more.net/uploads/-/system/personal\_snippet/2/bc063035797e978034adfb6f2da75e70/pspm8.fil''
+\item
+  ``https://git.dev.ti-more.net/uploads/-/system/personal\_snippet/2/3da35656df8f722441579847974a03cb/pspm16.fil''
+\item
+  ``https://git.dev.ti-more.net/uploads/-/system/personal\_snippet/2/e6015ec024ad1f53d4c2f39511620db1/pspm32.fil''
+\end{itemize}
+
+\subsection{1.2 Import}\label{import}
+
+\begin{verbatim}
+from filterbank.filterbank import *
+\end{verbatim}
+
+\section{2. Filterbank Tutorial}\label{filterbank-tutorial}
+
+\subsection{2.1 Create a filterbank
+object}\label{create-a-filterbank-object}
+
+\begin{verbatim}
+filterbank = Filterbank(<PATH TO FILTERBANK FILE>)
+\end{verbatim}
+
+This is an example without parameters, see 2.3 for an example with the
+parameters. \#\# 2.2 Read the header from filterbank data
+
+\begin{verbatim}
+filterbank.header
+\end{verbatim}
+
+Header data contains the following:
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+Variable & Description\tabularnewline
+\midrule
+\endhead
+source\_name & name of filterbank file\tabularnewline
+P & period of pulsar in ms\tabularnewline
+DM & dispersion measure of pulsar\tabularnewline
+machine\_id & id of machine used to receive signal data\tabularnewline
+telescope\_id & id of telescope used to receive signal
+data\tabularnewline
+data\_type & type of file
+\texttt{filterbank,\ time\ series}\tabularnewline
+fch1 & center frequency of first filterbank channel (MHz)\tabularnewline
+foff & filterbank channel bandwidth (MHz)\tabularnewline
+nchans & number of filterbank channels\tabularnewline
+nbits & number of bits per time sample
+\texttt{8,\ 16\ or\ 32}\tabularnewline
+tstart & timestamp of first sample (MJD)\tabularnewline
+nifs & number of seperate intermediate-frequency channels\tabularnewline
+\bottomrule
+\end{longtable}
+
+freq\_range = fch1 + (foff * nchans + fch1)\\
+time\_range = tstart + (tsamp/24/60/60)
+
+freq\_range is a tuple with a frequency start and a frequency stop\\
+The same applies to time\_range
+
+The header data, including the center frequency, can be retrieved by
+calling the header attribute from the Filterbank object.
+
+\subsection{2.3 Read filterbank file}\label{read-filterbank-file}
+
+The attributes time\_range and freq\_range can be passed as parameters
+to select a specific portion of the filterbank file. To make the
+Filterbank object read the filterbank file at once, set the
+\texttt{read\_all} parameter to \texttt{True}.
+
+\begin{verbatim}
+filterbank = Filterbank(<PATH TO FILTERBANK FILE>, freq_range, time_range, read_all)
+\end{verbatim}
+
+\subsection{2.4 Select a range of data from the filterbank
+file}\label{select-a-range-of-data-from-the-filterbank-file}
+
+The select\_data method can be used to retrieve data from the Filterbank
+object. The user has the option to give a \texttt{time} and/or
+\texttt{frequency} range to select a subset from the entire dataset. The
+time-range can either be an index of a sample or a float that is
+represents a moment in time (in seconds).
+
+\begin{verbatim}
+filterbank.select_data(freq_range, time_range)
+\end{verbatim}
+
+The \texttt{select\_data} method returns an array of all different
+channels/frequencies and a large matrix with all the received radio
+signals.
+
+The matrix contains for each time sample an array which has the
+intensity per channel/frequency.
+
+\subsection{2.5 Read filterbank as
+stream}\label{read-filterbank-as-stream}
+
+When reading the filterbank file as a stream, the user should let the
+\texttt{read\_all}-parameter stay \texttt{False} when initializing the
+filterbank object.
+
+Each time the user calls the \texttt{next\_row} method, it will retrieve
+an array with intensitiy per frequency for a new time sample from the
+filterbank file. When the last iteration of the filterbank is reached,
+the new\_row method will return \texttt{False}.\\
+The same goes for the \texttt{next\_n\_rows} method, where the user is
+able to define the amount of rows that should be returned.
+
+\begin{verbatim}
+filterbank.next_row()
+
+filterbank.next_n_rows(n_rows=10)
+\end{verbatim}
+
+\section{3. Fourier Transformations}\label{fourier-transformations}
+
+\subsection{3.1 DFT}\label{dft}
+
+The \texttt{fourier.dft\_slow} function is a plain implementation of
+discrete Fourier transformation.
+
+The \texttt{fourier.fft\_vectorized} function depends on this function.
+
+\subsubsection{3.1.1 Parameters}\label{parameters}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+Parameter & Description\tabularnewline
+\midrule
+\endhead
+input\_data & Array containing the values to be
+transformed.\tabularnewline
+\bottomrule
+\end{longtable}
+
+Returns an array containing the transformed values.
+
+\subsubsection{3.1.2 Example usage}\label{example-usage}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>>>} \ImportTok{from}\NormalTok{ Asteria }\ImportTok{import}\NormalTok{ fourier}
+\OperatorTok{>>>}\NormalTok{ fourier.dft_slow([}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{])}
+\NormalTok{array([}\DecValTok{10}\NormalTok{.}\OperatorTok{+}\FloatTok{0.}\NormalTok{00000000e}\OperatorTok{+}\NormalTok{00j, }\OperatorTok{-}\DecValTok{2}\NormalTok{.}\OperatorTok{+}\FloatTok{2.}\NormalTok{00000000e}\OperatorTok{+}\NormalTok{00j, }\OperatorTok{-}\DecValTok{2}\NormalTok{.}\OperatorTok{-}\FloatTok{9.}\NormalTok{79717439e}\OperatorTok{-}\NormalTok{16j, }\OperatorTok{-}\DecValTok{2}\NormalTok{.}\OperatorTok{-}\FloatTok{2.}\NormalTok{00000000e}\OperatorTok{+}\NormalTok{00j])}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{3.2 FFT}\label{fft}
+
+The \texttt{fourier.fft\_vectorized} function is a vectorized,
+non-recursive version of the Cooley-Tukey FFT
+
+Gives the same result as \texttt{fourier.dft\_slow} but is many times
+faster.
+
+\subsubsection{3.2.1 Parameters}\label{parameters-1}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+Parameter & Description\tabularnewline
+\midrule
+\endhead
+input\_data & Array containing the values to be
+transformed.\tabularnewline
+\bottomrule
+\end{longtable}
+
+Returns an array containing the transformed values.
+
+\subsubsection{3.2.2 Example usage}\label{example-usage-1}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>>>} \ImportTok{from}\NormalTok{ Asteria }\ImportTok{import}\NormalTok{ fourier}
+\OperatorTok{>>>}\NormalTok{ fourier.fft_vectorized([}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{])}
+\NormalTok{array([}\DecValTok{10}\NormalTok{.}\OperatorTok{+}\FloatTok{0.}\NormalTok{00000000e}\OperatorTok{+}\NormalTok{00j, }\OperatorTok{-}\DecValTok{2}\NormalTok{.}\OperatorTok{+}\FloatTok{2.}\NormalTok{00000000e}\OperatorTok{+}\NormalTok{00j, }\OperatorTok{-}\DecValTok{2}\NormalTok{.}\OperatorTok{-}\FloatTok{9.}\NormalTok{79717439e}\OperatorTok{-}\NormalTok{16j, }\OperatorTok{-}\DecValTok{2}\NormalTok{.}\OperatorTok{-}\FloatTok{2.}\NormalTok{00000000e}\OperatorTok{+}\NormalTok{00j])}
+\end{Highlighting}
+\end{Shaded}
+
+\section{4. Plotting diagrams}\label{plotting-diagrams}
+
+\subsection{4.1 PSD}\label{psd}
+
+The \texttt{plot.psd} function can be used to generate the data for a
+Power Spectral Density plot.
+
+\subsubsection{4.1.1 Parameters}\label{parameters-2}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.15\columnwidth}\raggedright\strut
+Parameter\strut
+\end{minipage} & \begin{minipage}[b]{0.80\columnwidth}\raggedright\strut
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+samples\strut
+\end{minipage} & \begin{minipage}[t]{0.80\columnwidth}\raggedright\strut
+1-D array or sequence. Array or sequence containing the data to be
+plotted.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+nfft\strut
+\end{minipage} & \begin{minipage}[t]{0.80\columnwidth}\raggedright\strut
+Integer, optional. The number of bins to be used. Defaults to 256.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+sample\_rate\strut
+\end{minipage} & \begin{minipage}[t]{0.80\columnwidth}\raggedright\strut
+Integer, optional. The sample rate of the input data in
+\texttt{samples}. Defaults to 2.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+window\strut
+\end{minipage} & \begin{minipage}[t]{0.80\columnwidth}\raggedright\strut
+Callable, optional. The window function to be used. Defaults to
+\texttt{plot.window\_hanning}.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+sides\strut
+\end{minipage} & \begin{minipage}[t]{0.80\columnwidth}\raggedright\strut
+\{`default', `onesided', `twosided'\}. Specifies which sides of the
+spectrum to return. Default gives the default behavior, which returns
+one-sided for real data and both for complex data. `onesided' forces the
+return of a one-sided spectrum, while `twosided' forces two-sided.\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsubsection{4.1.2 Returns}\label{returns}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.15\columnwidth}\raggedright\strut
+Variable\strut
+\end{minipage} & \begin{minipage}[b]{0.80\columnwidth}\raggedright\strut
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Pxx\strut
+\end{minipage} & \begin{minipage}[t]{0.80\columnwidth}\raggedright\strut
+1-D array. The values for the power spectrum before scaling (real
+valued).\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+freqs\strut
+\end{minipage} & \begin{minipage}[t]{0.80\columnwidth}\raggedright\strut
+1-D array. The frequencies corresponding to the elements in
+\texttt{Pxx}.\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsubsection{4.1.3 Example Usage}\label{example-usage-2}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ filterbank.filterbank }\ImportTok{import}\NormalTok{ Filterbank}
+\ImportTok{import}\NormalTok{ matplotlib.pyplot }\ImportTok{as}\NormalTok{ plt}
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\ImportTok{from}\NormalTok{ plot }\ImportTok{import}\NormalTok{ psd}
+\ImportTok{from}\NormalTok{ filterbank.header }\ImportTok{import}\NormalTok{ read_header}
+
+\CommentTok{# Instatiate the filterbank reader and point to the filterbank file}
+\NormalTok{fb }\OperatorTok{=}\NormalTok{ Filterbank(filename}\OperatorTok{=}\StringTok{'examples/pspm32.fil'}\NormalTok{)}
+
+\CommentTok{# read the data in the filterbank file}
+\NormalTok{_, samples }\OperatorTok{=}\NormalTok{ fb.select_data()}
+
+\CommentTok{# Convert 2D Array to 1D Array with complex numbers}
+\NormalTok{samples }\OperatorTok{=}\NormalTok{ samples[}\DecValTok{0}\NormalTok{] }\OperatorTok{+}\NormalTok{ (samples[}\DecValTok{1}\NormalTok{] }\OperatorTok{*}\NormalTok{ 1j)}
+
+\CommentTok{# Read the header of the filterbank file}
+\NormalTok{header }\OperatorTok{=}\NormalTok{ read_header(}\StringTok{'examples/pspm32.fil'}\NormalTok{)}
+
+\CommentTok{# Calculate the center frequency with the data in the header}
+\NormalTok{center_freq }\OperatorTok{=}\NormalTok{ header[b}\StringTok{'fch1'}\NormalTok{] }\OperatorTok{+} \BuiltInTok{float}\NormalTok{(header[b}\StringTok{'nchans'}\NormalTok{]) }\OperatorTok{*}\NormalTok{ header[b}\StringTok{'foff'}\NormalTok{] }\OperatorTok{/} \FloatTok{2.0}
+
+\BuiltInTok{print}\NormalTok{(center_freq)}
+\CommentTok{# Get the powerlevels and the frequencies}
+\NormalTok{PXX, freqs, _ }\OperatorTok{=}\NormalTok{ psd(samples, nfft}\OperatorTok{=}\DecValTok{1024}\NormalTok{, sample_rate}\OperatorTok{=}\DecValTok{80}\NormalTok{, sides}\OperatorTok{=}\StringTok{'twosided'}\NormalTok{)}
+
+\CommentTok{# Calculate the powerlevel dB's}
+\NormalTok{power_levels }\OperatorTok{=}  \DecValTok{10} \OperatorTok{*}\NormalTok{ np.log10(PXX}\OperatorTok{/}\NormalTok{(}\DecValTok{80}\NormalTok{))}
+
+\CommentTok{# Add the center frequency to the frequencies so they match the actual frequencies}
+\NormalTok{freqs }\OperatorTok{=}\NormalTok{ freqs }\OperatorTok{+}\NormalTok{ center_freq}
+
+\CommentTok{# Plot the PSD}
+\NormalTok{plt.grid(}\VariableTok{True}\NormalTok{)}
+\NormalTok{plt.xlabel(}\StringTok{'Frequency (MHz)'}\NormalTok{)}
+\NormalTok{plt.ylabel(}\StringTok{'Intensity (dB)'}\NormalTok{)}
+\NormalTok{plt.plot(freqs, power_levels)}
+\NormalTok{plt.show()}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{4.2 Waterfall}\label{waterfall}
+
+The \texttt{plot.waterfall.Waterfall} class can be used to generate
+waterfall plots.
+
+\subsubsection{4.2.1 Construction}\label{construction}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.15\columnwidth}\raggedright\strut
+Parameter\strut
+\end{minipage} & \begin{minipage}[b]{0.80\columnwidth}\raggedright\strut
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+filter\_bank\strut
+\end{minipage} & \begin{minipage}[t]{0.80\columnwidth}\raggedright\strut
+A \texttt{filterbank} object.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+center\_freq\strut
+\end{minipage} & \begin{minipage}[t]{0.80\columnwidth}\raggedright\strut
+The center frequency of the signal in the filterbank object\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+sample\_freq\strut
+\end{minipage} & \begin{minipage}[t]{0.80\columnwidth}\raggedright\strut
+The sample frequency of the signal in the filterbank object\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+fig\strut
+\end{minipage} & \begin{minipage}[t]{0.80\columnwidth}\raggedright\strut
+An imaging object, like \texttt{pyplot.figure()}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+mode\strut
+\end{minipage} & \begin{minipage}[t]{0.80\columnwidth}\raggedright\strut
+String \texttt{\{discrete,\ stream\}}. The mode to operate on. Use
+discrete for discrete datasets, and stream for stream data. Defaults to
+\texttt{stream}.\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsubsection{4.2.2 Methods}\label{methods}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.27\columnwidth}\raggedright\strut
+Method\strut
+\end{minipage} & \begin{minipage}[b]{0.67\columnwidth}\raggedright\strut
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+init\_plot(self)\strut
+\end{minipage} & \begin{minipage}[t]{0.67\columnwidth}\raggedright\strut
+Initialize the plot\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+update\_plot\_labes(self)\strut
+\end{minipage} & \begin{minipage}[t]{0.67\columnwidth}\raggedright\strut
+Generate the plot labels\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+get\_next(self)\strut
+\end{minipage} & \begin{minipage}[t]{0.67\columnwidth}\raggedright\strut
+Returns the next row of data in the filterbank object\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+get\_image(self)\strut
+\end{minipage} & \begin{minipage}[t]{0.67\columnwidth}\raggedright\strut
+Returns the image data of the full dataset, if using a discrete
+dataset.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+update(self, i)\strut
+\end{minipage} & \begin{minipage}[t]{0.67\columnwidth}\raggedright\strut
+Updates the image with the next row of data, when using a continuous
+datastream.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+animated\_plotter(self)\strut
+\end{minipage} & \begin{minipage}[t]{0.67\columnwidth}\raggedright\strut
+Returns the figure and update function for matplotlib animation\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+get\_center\_freq(self)\strut
+\end{minipage} & \begin{minipage}[t]{0.67\columnwidth}\raggedright\strut
+Returns the center frequency stored in the filterbank header\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsubsection{4.2.3 Example Usage}\label{example-usage-3}
+
+\paragraph{4.2.3.1 With discrete data}\label{with-discrete-data}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ matplotlib.animation }\ImportTok{as}\NormalTok{ animation}
+\ImportTok{from}\NormalTok{ filterbank.header }\ImportTok{import}\NormalTok{ read_header}
+\ImportTok{from}\NormalTok{ filterbank.filterbank }\ImportTok{import}\NormalTok{ Filterbank}
+\ImportTok{from}\NormalTok{ plot }\ImportTok{import}\NormalTok{ waterfall}
+\ImportTok{import}\NormalTok{ pylab }\ImportTok{as}\NormalTok{ pyl}
+\ImportTok{from}\NormalTok{ plot.plot }\ImportTok{import}\NormalTok{ next_power_of_2}
+
+\NormalTok{fb }\OperatorTok{=}\NormalTok{ Filterbank(filename}\OperatorTok{=}\StringTok{'./pspm32.fil'}\NormalTok{, read_all}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+
+\NormalTok{wf }\OperatorTok{=}\NormalTok{ waterfall.Waterfall(filter_bank}\OperatorTok{=}\NormalTok{fb, fig}\OperatorTok{=}\NormalTok{pyl.figure(), mode}\OperatorTok{=}\StringTok{"discrete"}\NormalTok{)}
+
+\NormalTok{img }\OperatorTok{=}\NormalTok{ wf.get_image()}
+
+\NormalTok{pyl.show(img)}
+\end{Highlighting}
+\end{Shaded}
+
+\paragraph{4.2.3.2 With stream data}\label{with-stream-data}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ matplotlib.animation }\ImportTok{as}\NormalTok{ animation}
+\ImportTok{from}\NormalTok{ filterbank.header }\ImportTok{import}\NormalTok{ read_header}
+\ImportTok{from}\NormalTok{ filterbank.filterbank }\ImportTok{import}\NormalTok{ Filterbank}
+\ImportTok{from}\NormalTok{ plot }\ImportTok{import}\NormalTok{ waterfall}
+\ImportTok{import}\NormalTok{ pylab }\ImportTok{as}\NormalTok{ pyl}
+\ImportTok{from}\NormalTok{ plot.plot }\ImportTok{import}\NormalTok{ next_power_of_2}
+
+
+\NormalTok{fb }\OperatorTok{=}\NormalTok{ Filterbank(filename}\OperatorTok{=}\StringTok{'./pspm32.fil'}\NormalTok{)}
+
+\NormalTok{wf }\OperatorTok{=}\NormalTok{ waterfall.Waterfall(fb}\OperatorTok{=}\NormalTok{fb, fig}\OperatorTok{=}\NormalTok{pyl.figure(), mode}\OperatorTok{=}\StringTok{"stream"}\NormalTok{)}
+
+\NormalTok{fig, update, frames, repeat }\OperatorTok{=}\NormalTok{ wf.animated_plotter()}
+
+\NormalTok{ani }\OperatorTok{=}\NormalTok{ animation.FuncAnimation(fig, update, frames}\OperatorTok{=}\NormalTok{frames,repeat}\OperatorTok{=}\NormalTok{repeat)}
+\NormalTok{pyl.show()}
+\end{Highlighting}
+\end{Shaded}
+
+\section{5. Timeseries module}\label{timeseries-module}
+
+Learn how to use the timeseries object. The timeseries object is used
+for all timeseries related operations both filterbank and non-filterbank
+(general array) types.
+
+\subsection{5.1 Initialize the timeseries
+object}\label{initialize-the-timeseries-object}
+
+The \texttt{Timeseries} module can be used with both the filterbank file
+and a general \texttt{numpy} array.
+
+\subsubsection{5.1.1 Initialize using a filterbank
+file}\label{initialize-using-a-filterbank-file}
+
+\begin{itemize}
+\tightlist
+\item
+  Create an filterbank object using the standard filterbank module.
+\item
+  Read the filterbank file in memory (do not use streams)
+\item
+  Initialize the timeseries object using the filterbank object.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ filterbank.filterbank }\ImportTok{as}\NormalTok{ Filterbank}
+\ImportTok{import}\NormalTok{ timeseries.timeseries }\ImportTok{as}\NormalTok{ Timeseries}
+
+\CommentTok{# Read the filterbank file from a file. }
+\NormalTok{filterbank_obj }\OperatorTok{=}\NormalTok{ Filterbank(}\StringTok{'./pspm32.fil'}\NormalTok{)}
+
+\CommentTok{# Read the filterbank as a whole instead of as a stream. }
+\NormalTok{filterbank_obj }\OperatorTok{=}\NormalTok{  filterbank_obj.read_filterbank()}
+
+\CommentTok{# Initialize the timeseries object. }
+\NormalTok{ts }\OperatorTok{=}\NormalTok{ Timeseries().from_filterbank(filterbank_obj)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{5.1.2 Initialize using a numpy
+array}\label{initialize-using-a-numpy-array}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\ImportTok{import}\NormalTok{ timeseries.timeseries }\ImportTok{as}\NormalTok{ Timeseries}
+
+\NormalTok{input_array }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{11}\NormalTok{])}
+
+\NormalTok{ts }\OperatorTok{=}\NormalTok{ Timeseries(input_array)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{5.2 Retrieve the timeseries array from timeseries
+object}\label{retrieve-the-timeseries-array-from-timeseries-object}
+
+\subsubsection{5.2.1 Retrieve timeseries
+object}\label{retrieve-timeseries-object}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Assumed that your timeseries object has been initialized. }
+
+\NormalTok{timeseries_array }\OperatorTok{=}\NormalTok{ timeseries.get()}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{5.3 Downsample the
+timeseries}\label{downsample-the-timeseries}
+
+The first implemented feature for the timeseries object is the
+downsample/decimate function. This enables you to downsample your
+timeseries by \texttt{q} scale. This will make your input array smaller
+and basically `cuts' the other parts off.
+
+\subsubsection{5.3.1 Downsample/Decimate}\label{downsampledecimate}
+
+Called downsample in the current release because no anti-alliasing is
+used, might be renamed to decimate once more advanced operations (such
+as antialiasing) are used.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Downsampled array shall be 3 times smaller than the current timeseries (as initialized) }
+\NormalTok{scale }\OperatorTok{=} \DecValTok{3}
+\CommentTok{# Returns an array with the downsampled timeseries, can also be retreived lated user timseries.get()}
+\NormalTok{downsampled_array }\OperatorTok{=}\NormalTok{ timeseries.downsample(scale)}
+\end{Highlighting}
+\end{Shaded}
+
+\section{6. Clipping}\label{clipping}
+
+\subsection{6.1 Clipping}\label{clipping-1}
+
+The \texttt{clipping.clipping} function can be used to remove noise from
+the data.
+
+It combines all the individual methods of the clipping module to do
+this. The individual methods are described below in order.
+
+\begin{verbatim}
+clipping(<FREQUENCY_CHANNELS>, <TIME_SAMPLES>)
+\end{verbatim}
+
+\subsection{6.2 Filter samples}\label{filter-samples}
+
+The \texttt{clipping.filter\_samples} function can be used to remove
+entire time samples, that have noise in them.
+
+The noise for a time sample is calculated by summing all the individual
+frequencies for one sample, and then comparing it with the average(mean)
+of all samples. If the intensity of a sample is lower than
+\texttt{average\ intensity\ per\ sample\ *\ factor}, the sample will be
+added back to the array. Otherwise, it's removed.
+
+It is recommended to give only the first 2000 samples to this method,
+because adding more will only hurt the performance.
+
+\begin{verbatim}
+filter_samples(<TIME_SAMPLES>)
+\end{verbatim}
+
+\subsection{6.3 Filter channels}\label{filter-channels}
+
+The \texttt{clipping.filter\_channels} function can be used to remove
+entire channels/frequencies with noise from the data.
+
+The noise for a frequency channel is identified by calculating the mean
+and standard deviation for each column in the data. After that, samples
+are removed if the mean or standard deviation of the intensity is higher
+than the \texttt{average\ intensity\ per\ channel\ *\ factor}. The
+channels with noise are removed from both the list with channels, as
+well as the entire dataset.
+
+\begin{verbatim}
+filter_channels(<FREQUENCY_CHANNELS>, <TIME_SAMPLES>)
+\end{verbatim}
+
+\subsection{6.4 Filter individual
+channels}\label{filter-individual-channels}
+
+The \texttt{clipping.filter\_indv\_channels} function can be used to
+replace all the remaining samples with noise.
+
+The noise for each individual sample is identified by calculating the
+mean intensity per channel. After that, samples are replaced with the
+median of a channel if their intensity is higher than the
+\texttt{average\ intensity\ per\ channel\ *\ factor}.
+
+\begin{verbatim}
+filter_indv_channels(<TIME_SAMPLES>)
+\end{verbatim}
+
+\section{7. Dedispersion}\label{dedispersion}
+
+\subsection{7.1 Introduction}\label{introduction}
+
+\begin{itemize}
+\item
+  Pulsars produce a narrow beam of electromagnetic radiation which
+  rotates like a lighthouse beam, so a pulse is seen as it sweeps over a
+  radiotelescope. The signal is spread over a wide frequency range.
+\item
+  If space was an empty vacuum, all the signals would travel at the same
+  speed, but due to free electrons different frequencies travel at
+  slightly different speeds (dispersion).
+\end{itemize}
+
+\subsection{7.2 Dedisperse}\label{dedisperse}
+
+This method performs dedispersion on the filterbank data.
+
+\subsubsection{7.2.1 Parameters}\label{parameters-3}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+Parameters & Description\tabularnewline
+\midrule
+\endhead
+Samples & Array or sequence containing the data to be
+plotted.\tabularnewline
+DM & Dispersion measure (cm-3 pc)\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsubsection{7.2.2 Returns}\label{returns-1}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+Variable & Description\tabularnewline
+\midrule
+\endhead
+Samples & Dedispersed samples\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsection{7.3 find\_dm}\label{find_dm}
+
+This method finds the dispersion measure.
+
+\subsubsection{7.3.1 Parameters}\label{parameters-4}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.41\columnwidth}\raggedright\strut
+Parameters\strut
+\end{minipage} & \begin{minipage}[b]{0.41\columnwidth}\raggedright\strut
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+Samples\strut
+\end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+1-D array or sequence. Array or sequence containing the data to be
+plotted.\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsubsection{7.3.2 Returns}\label{returns-2}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+Variable & Description\tabularnewline
+\midrule
+\endhead
+dm & Dispersion measure\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsection{7.4 find\_line}\label{find_line}
+
+This method finds a line starting from the sample index given in the
+parameters. This will stop if there isn't a intensity within the
+max\_delay higher than the average\_intensity.
+
+\subsubsection{7.4.1 Parameters}\label{parameters-5}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.41\columnwidth}\raggedright\strut
+Parameters\strut
+\end{minipage} & \begin{minipage}[b]{0.41\columnwidth}\raggedright\strut
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+Samples\strut
+\end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+1-D array or sequence. Array or sequence containing the data to be
+plotted.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+start\_sample\_index\strut
+\end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+The start sample index\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+max\_delay\strut
+\end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+The max delay of the recieved signal\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+average\_intensity\strut
+\end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+The average intensity\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsubsection{7.4.2 Returns}\label{returns-3}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+Variable & Description\tabularnewline
+\midrule
+\endhead
+start\_sample\_index & The first frequency\tabularnewline
+previous\_sample\_index & The higher frequency\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsection{7.5
+find\_estimation\_intensity}\label{find_estimation_intensity}
+
+This method finds the average intensity for top x intensities. The
+\texttt{average\_intensity} is considered a requirement for intensities
+to be considered a pulsar.
+
+\subsubsection{7.5.1 Parameters}\label{parameters-6}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+Parameters & Description\tabularnewline
+\midrule
+\endhead
+Samples & Array or sequence containing the data to be
+plotted.\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsubsection{7.5.2 Returns}\label{returns-4}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+Variable & Description\tabularnewline
+\midrule
+\endhead
+average\_intensity & The avarage intesity\tabularnewline
+\bottomrule
+\end{longtable}
+
+\section{8. Pipeline}\label{pipeline}
+
+\subsection{8.1 Introduction}\label{introduction-1}
+
+The Pipeline module is used to execute the different modules in a
+specific order. There are currently three different options for running
+the pipeline.
+
+These options include: * read multiple rows, \texttt{read\_n\_rows} *
+read single rows, \texttt{read\_rows} * read all rows,
+\texttt{read\_static}
+
+The constructor of the pipeline module will recognize which method is
+fit for running which method, by looking at the given arguments to the
+constructor.
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.41\columnwidth}\raggedright\strut
+Parameter\strut
+\end{minipage} & \begin{minipage}[b]{0.41\columnwidth}\raggedright\strut
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+filename\strut
+\end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+The path to the filterbank file.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+as\_stream\strut
+\end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+This parameter decides whether the filterbank should be read as
+stream.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+DM\strut
+\end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+The dispersion measure (DM) is used for performing dedispersion.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+scale\strut
+\end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+The scale is used for performing downsampling the time series.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+n\strut
+\end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+The \texttt{n} is the rowsize of chunks for reading the filterbank as
+stream.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+size\strut
+\end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+The size parameter is used for deciding the size of the
+filterbank.\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+After deciding which method to run for running the filterbank in a
+pipeline, it will measure the time it takes to run each method using
+\texttt{measure\_method}. After running all the different methods, the
+constructor will append the results (a dictionary) to a txt file.
+
+\subsection{8.2 Read rows}\label{read-rows}
+
+The \texttt{read\_rows} method reads the Filterbank data row per row.
+Because it only reads the filterbank per row, it is unable to execute
+most methods. The alternative for this method is the
+\texttt{read\_n\_rows} method, which is able to run all methods.
+
+\begin{verbatim}
+pipeline.Pipeline(<filterbank_file>, as_stream=True)
+\end{verbatim}
+
+\subsection{8.3 Read n rows}\label{read-n-rows}
+
+The \texttt{read\_n\_rows} method first splits all the filterbank data
+into chunks of n samples. After splitting the filterbank data in chunks,
+it will run the different modules of the pipeline for each chunk. The
+remaining data, that which does not fit into the sample size, is
+currently ignored.
+
+The \texttt{n} or sample size should be a power of 2 multiplied with the
+given scale for the downsampling.
+
+\begin{verbatim}
+pipeline.Pipeline(<filterbank_file>, n=<size> , as_stream=True)
+\end{verbatim}
+
+\subsection{8.4 Read static}\label{read-static}
+
+The \texttt{read\_static} method reads the entire filterbank at once,
+and applies each method to the entire dataset. If the filterbank file is
+too large for running it in-memory, the alternative is using
+\texttt{read\_n\_rows}.
+
+\begin{verbatim}
+pipeline.Pipeline(<filterbank_file>)
+\end{verbatim}
+
+\subsection{8.5 Measure methods}\label{measure-methods}
+
+The \texttt{measure\_methods} is ran for each of the above methods, and
+calculates the time it takes to run each of the different methods. For
+each method it will create a key using the name of the method, and save
+the time it took to run the method as a value. At the end, it will
+returns a dictionary with all the keys and values.
+
+\subsection{7.6 Overview of pipeline}\label{overview-of-pipeline}
+
+Apart from the different modules described in the previous paragraphs,
+additional modules are required for this library to make detecting
+pulsar signals possible. However, these additional modules have not been
+developed yet, and are required to be developed in the future. In this
+paragraph the additional modules are listed and described.
+
+Modules that are missing in the pipeline are highlighted using a
+\texttt{*}.
+
+\begin{verbatim}
+1. Read Filterbank as stream
+2. Reduce RFI using clipping
+3. Dedisperse radio signal
+4. Transform dedispersed signal to TimeSeries
+5. Run fast Fourier transformation on TimeSeries
+6. * Identify and save birdies in file
+7. * Perform Harmonic Summing
+8. * Search and identify single and periodic signals
+9. * Phase-fold remaining signals
+10.* Do Transient searches
+\end{verbatim}
+
+\section{9. Generating mock data}\label{generating-mock-data}
+
+\subsection{9.1 Creating a filterbank
+file}\label{creating-a-filterbank-file}
+
+To generate a filterbank file you may use the following example code:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ filterbank.header }\ImportTok{as}\NormalTok{ header}
+
+\NormalTok{header }\OperatorTok{=}\NormalTok{ \{}
+\NormalTok{    b}\StringTok{'source_name'}\NormalTok{: b}\StringTok{'P: 80.0000 ms, DM: 200.000'}\NormalTok{,}
+\NormalTok{    b}\StringTok{'machine_id'}\NormalTok{: }\DecValTok{10}\NormalTok{,}
+\NormalTok{    b}\StringTok{'telescope_id'}\NormalTok{: }\DecValTok{4}\NormalTok{,}
+\NormalTok{    b}\StringTok{'data_type'}\NormalTok{: }\DecValTok{1}\NormalTok{,}
+\NormalTok{    b}\StringTok{'fch1'}\NormalTok{: }\DecValTok{400}\NormalTok{,}
+\NormalTok{    b}\StringTok{'foff'}\NormalTok{: }\OperatorTok{-}\FloatTok{0.062}\NormalTok{,}
+\NormalTok{    b}\StringTok{'nchans'}\NormalTok{: }\DecValTok{128}\NormalTok{,}
+\NormalTok{    b}\StringTok{'tstart'}\NormalTok{: }\FloatTok{6000.0}\NormalTok{,}
+\NormalTok{    b}\StringTok{'tsamp'}\NormalTok{: }\FloatTok{8e-05}\NormalTok{,}
+\NormalTok{    b}\StringTok{'nifs'}\NormalTok{: }\DecValTok{1}\NormalTok{,}
+\NormalTok{    b}\StringTok{'nbits'}\NormalTok{: }\DecValTok{8}
+\NormalTok{\}}
+
+\NormalTok{header.generate_file(}\StringTok{"file_path/file_name"}\NormalTok{, header)}
+\end{Highlighting}
+\end{Shaded}
+
+The header data is passed in a header dict. For a more detailed
+explanation on the file header, please consult
+\href{docs/filterbank.md\#22-read-the-header-from-filterbank-data}{chapter
+2.2}.
+
+\subsection{9.2 Generate signal}\label{generate-signal}
+
+The generate\_signal method generates a mock signal based on the
+following parameters:
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+Variable & Description\tabularnewline
+\midrule
+\endhead
+noise\_level & the max amplitude of the generated noise\tabularnewline
+period & period of the signal\tabularnewline
+t\_obs & observation time in s\tabularnewline
+n\_pts & intervals between samples\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsection{9.3 Generate header}\label{generate-header}
+
+The generate\_header method generates a header string based on the
+header dict provided in the example in chapter 8.1. The dict provides
+keys encoded in bytes and the method converts each keyword to a string
+using the keyword\_to\_string method (see below).
+
+\subsection{9.4 Keyword to string}\label{keyword-to-string}
+
+The keyword\_to\_string method converts a keyword from the header dict
+to a serialized string.
+
+\subsection{9.5 Write data}\label{write-data}
+
+Once all the required data is generated to a filterbank file. The data
+is written to the file as bytes.
+
+\end{document}

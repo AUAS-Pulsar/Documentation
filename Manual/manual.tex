@@ -102,17 +102,17 @@
 
 \begin{document}
 	\begin{titlepage}
-
-			\maketitle
-			
-			\vspace{0.8cm}
-		\begin{center}
-			Amsterdam University of Applied Sciences\\
-			HBO-ICT\\
-			The Netherlands\\
-			24-01-2019
-		\end{center}
-	\end{titlepage}
+	
+	\maketitle
+	
+	\vspace{0.8cm}
+	\begin{center}
+		Amsterdam University of Applied Sciences\\
+		HBO-ICT\\
+		The Netherlands\\
+		24-01-2019
+	\end{center}
+\end{titlepage}
 
 \section{1. Getting started}\label{getting-started}
 
@@ -762,7 +762,8 @@ filter_indv_channels(<TIME_SAMPLES>)
 \item
   If space was an empty vacuum, all the signals would travel at the same
   speed, but due to free electrons different frequencies travel at
-  slightly different speeds (dispersion).
+  slightly different speeds (dispersion), this can be corrected by
+  performing dedispersion.
 \end{itemize}
 
 \subsection{7.2 Dedisperse}\label{dedisperse}
@@ -773,12 +774,35 @@ This method performs dedispersion on the filterbank data.
 
 \begin{longtable}[]{@{}ll@{}}
 \toprule
-Parameters & Description\tabularnewline
+\begin{minipage}[b]{0.41\columnwidth}\raggedright\strut
+Parameters\strut
+\end{minipage} & \begin{minipage}[b]{0.41\columnwidth}\raggedright\strut
+Description\strut
+\end{minipage}\tabularnewline
 \midrule
 \endhead
-Samples & Array or sequence containing the data to be
-plotted.\tabularnewline
-DM & Dispersion measure (cm-3 pc)\tabularnewline
+\begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+Samples\strut
+\end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+Array or sequence containing the intensities to be dedispersed.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+highest\_x\strut
+\end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+Specifies the amount of intensities that are used for estimating the
+minimum pulsar intensity\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+max\_delay\strut
+\end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+Specifies the maximum allowed amount of samples between the currently
+considered pulsar signal and the next pulsar signal\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+DM\strut
+\end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+Dispersion measure (cm-3 pc)\strut
+\end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -811,8 +835,19 @@ Description\strut
 \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
 Samples\strut
 \end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
-1-D array or sequence. Array or sequence containing the data to be
-plotted.\strut
+Array or sequence containing the intensities to be dedispersed.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+pulsar\_intensity\strut
+\end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+Estimation of the minimum intensity for an intensity to be considered a
+pulsar\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+max\_delay\strut
+\end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+Specifies the maximum allowed amount of samples between the currently
+considered pulsar signal and the next pulsar signal\strut
 \end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}
@@ -830,9 +865,10 @@ dm & Dispersion measure\tabularnewline
 
 \subsection{7.4 find\_line}\label{find_line}
 
-This method finds a line starting from the sample index given in the
-parameters. This will stop if there isn't a intensity within the
-max\_delay higher than the average\_intensity.
+This method will attempt to find a continuous signal starting from the
+sample index given in the parameters. This method will stop if there
+isn't an intensity found within the max\_delay higher than the
+pulsar\_intensity.
 
 \subsubsection{7.4.1 Parameters}\label{parameters-6}
 
@@ -848,23 +884,25 @@ Description\strut
 \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
 Samples\strut
 \end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
-1-D array or sequence. Array or sequence containing the data to be
-plotted.\strut
+Array or sequence containing the intensities to be dedispered.\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
 start\_sample\_index\strut
 \end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
-The start sample index\strut
+The index from which this method will continue to attempt and find a
+continuous pulsar signal\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
 max\_delay\strut
 \end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
-The max delay of the recieved signal\strut
+Specifies the maximum allowed amount of samples between the currently
+considered pulsar signal and the next pulsar signal\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
-average\_intensity\strut
+pulsar\_intensity\strut
 \end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
-The average intensity\strut
+Estimation of the minimum intensity for an intensity to be considered a
+pulsar\strut
 \end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}
@@ -876,27 +914,42 @@ The average intensity\strut
 Variable & Description\tabularnewline
 \midrule
 \endhead
-start\_sample\_index & The first frequency\tabularnewline
-previous\_sample\_index & The higher frequency\tabularnewline
+start\_sample\_index & The first frequency of the continuous signal
+found\tabularnewline
+previous\_index & The last frequency of the continuous signal
+found\tabularnewline
 \bottomrule
 \end{longtable}
 
 \subsection{7.5
 find\_estimation\_intensity}\label{find_estimation_intensity}
 
-This method finds the average intensity for top x intensities. The
-\texttt{average\_intensity} is considered a requirement for intensities
-to be considered a pulsar.
+This method finds the average intensity for the highest x intensities.
+The \texttt{average\_intensity} is considered a requirement for
+intensities to be considered a pulsar.
 
 \subsubsection{7.5.1 Parameters}\label{parameters-7}
 
 \begin{longtable}[]{@{}ll@{}}
 \toprule
-Parameters & Description\tabularnewline
+\begin{minipage}[b]{0.41\columnwidth}\raggedright\strut
+Parameters\strut
+\end{minipage} & \begin{minipage}[b]{0.41\columnwidth}\raggedright\strut
+Description\strut
+\end{minipage}\tabularnewline
 \midrule
 \endhead
-Samples & Array or sequence containing the data to be
-plotted.\tabularnewline
+\begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+Samples\strut
+\end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+Array or sequence containing the intensities to be dedispersed.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+max\_delay\strut
+\end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+Specifies the maximum allowed amount of samples between the currently
+considered pulsar signal and the next pulsar signal\strut
+\end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -904,10 +957,19 @@ plotted.\tabularnewline
 
 \begin{longtable}[]{@{}ll@{}}
 \toprule
-Variable & Description\tabularnewline
+\begin{minipage}[b]{0.41\columnwidth}\raggedright\strut
+Variable\strut
+\end{minipage} & \begin{minipage}[b]{0.41\columnwidth}\raggedright\strut
+Description\strut
+\end{minipage}\tabularnewline
 \midrule
 \endhead
-average\_intensity & The avarage intesity\tabularnewline
+\begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+average\_intensity\strut
+\end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+Estimation of the minimum intensity for an intensity to be considered a
+pulsar\strut
+\end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}
 
